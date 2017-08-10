@@ -1,0 +1,74 @@
+var range = function(start,end,step){
+	var result = [];
+	if(step === undefined)
+		step = 1;
+	if(start<end){
+		for(var i = 0; i < end - start +1; i++)
+			result[i] = start + (i * step);
+	}
+
+	else if ( start > end){
+		for(var i = 0; i < start - end + 1; i++)
+			result[i] = start + (i * step);
+	}
+	return result;
+}
+
+var sum = function(arr){
+	var result = 0;
+	for (var i = 0; i < arr.length; i++)
+		result += arr[i];
+	return result;
+}
+
+var reverseArray = function(arr){
+	var revArr = [];
+	for(var i = 0; i < arr.length; i++)
+		revArr[i] = arr[arr.length - i -1];
+	return revArr[i];
+}
+
+var reverseArrayInPlace = function(arr){
+	for(var i = 0; i < arr.length/2; i++){
+		var temp = arr[i];
+		arr[i] = arr[arr.length-i-1];
+		arr[arr.length-i-1] = temp
+	}
+}
+
+var arrayToList = function(arr){
+	for(var i = arr.length-1; i >1;i--){
+		var list = {
+			value : arr[i],
+			rest : list
+		};
+	}
+	return list;
+}
+
+var listToArray = function(list){
+	var arr = [];
+	for(var node = list; node; node = node.rest){
+		arr.push(node.value);
+	}
+	return arr;
+}
+
+var prepend = function(element, list){
+	var newList = {
+		value: element,
+		rest: lsit
+	};
+	return newList;
+}
+
+var nth = function(list, pos){
+	var i = 0;
+	var result;
+	for (var node = list; node; node = node.rest){
+		if(i===pos)
+			result = node.value;
+		i++;
+	}
+	return result;
+}
